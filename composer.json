@@ -1,0 +1,16 @@
+{
+    "name": "scaleplan/cloudpayments",
+    "description": "Cloudpayemtns API wrapper",
+    "autoload": {
+        "psr-4": {
+            "Scaleplan\\CloudPayments\\": "src/"
+        }
+    },
+    "require": {
+        "php": ">=7.0",
+        "scaleplan/dto": "dev-master"
+    },
+    "require-dev": {
+        "roave/security-advisories": "dev-master"
+    }
+}
