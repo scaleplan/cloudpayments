@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace Scaleplan\CloudPayments\DTO\Response\Api;
 
 use OpenApi\Annotations as SWG;
+use Scaleplan\CloudPayments\DTO\Response\Notifications\PayDTO;
 use Symfony\Component\Validator\Constraints as Assert;
 use Scaleplan\Validator\Constraints as AppAssert;
 
@@ -39,5 +40,23 @@ class GetPaymentDTO extends ApiResponseDTO
     public function getModel()
     {
         return $this->model;
+    }
+
+    /**
+     * @param $models
+     *
+     * @throws \ReflectionException
+     * @throws \Scaleplan\CloudPayments\Exceptions\FraudulentNotificationException
+     * @throws \Scaleplan\DependencyInjection\Exceptions\ContainerTypeNotSupportingException
+     * @throws \Scaleplan\DependencyInjection\Exceptions\DependencyInjectionException
+     * @throws \Scaleplan\DependencyInjection\Exceptions\ParameterMustBeInterfaceNameOrClassNameException
+     * @throws \Scaleplan\DependencyInjection\Exceptions\ReturnTypeMustImplementsInterfaceException
+     * @throws \Scaleplan\Helpers\Exceptions\EnvNotFoundException
+     */
+    protected function setModel($models) : void
+    {
+        foreach ($models as $model) {
+            $this->model[] = new PayDTO($model);
+        }
     }
 }
