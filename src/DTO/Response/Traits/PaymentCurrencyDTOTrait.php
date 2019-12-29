@@ -7,33 +7,36 @@ use OpenApi\Annotations as SWG;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Class StartDateDTOTrait
+ * Class PaymentCurrencyDTOTrait
  *
  * @package Scaleplan\CloudPayments\DTO\Response\Traits
  */
-trait StartDateDTOTrait
+trait PaymentCurrencyDTOTrait
 {
     /**
      * @var string
      *
      * @Assert\NotBlank()
      * @Assert\Type(type="string", groups={"type"})
-     * @Assert\DateTime(format="Y-m-d H:i:s")
+     * @Assert\Choice(
+     *     strict=true,
+     *     choices=\Scaleplan\CloudPayments\Constants\CurrencyCodes::ALL
+     * )
      *
      * @SWG\Property(
-     *     property="startDate",
+     *     property="paymentCurrency",
      *     type="string",
      *     nullable=false,
-     *     description="Дата и время первого платежа по плану во временной зоне UTC"
+     *     description="Валюта"
      * )
      */
-    protected $startDate;
+    protected $paymentCurrency;
 
     /**
      * @return string
      */
-    public function getStartDate()
+    public function getPaymentCurrency()
     {
-        return $this->startDate;
+        return $this->paymentCurrency;
     }
 }

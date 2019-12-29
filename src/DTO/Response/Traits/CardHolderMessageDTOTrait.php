@@ -7,33 +7,32 @@ use OpenApi\Annotations as SWG;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Class StartDateDTOTrait
+ * Class CardHolderMessageDTOTrait
  *
  * @package Scaleplan\CloudPayments\DTO\Response\Traits
  */
-trait StartDateDTOTrait
+trait CardHolderMessageDTOTrait
 {
     /**
      * @var string
      *
      * @Assert\NotBlank()
      * @Assert\Type(type="string", groups={"type"})
-     * @Assert\DateTime(format="Y-m-d H:i:s")
      *
      * @SWG\Property(
-     *     property="startDate",
+     *     property="cardHolderMessage",
      *     type="string",
      *     nullable=false,
-     *     description="Дата и время первого платежа по плану во временной зоне UTC"
+     *     description="Сообщение для получателя выплаты"
      * )
      */
-    protected $startDate;
+    protected $cardHolderMessage;
 
     /**
      * @return string
      */
-    public function getStartDate()
+    public function getCardHolderMessage()
     {
-        return $this->startDate;
+        return $this->cardHolderMessage;
     }
 }

@@ -1,39 +1,46 @@
 <?php
 declare(strict_types=1);
 
-namespace Scaleplan\CloudPayments\DTO\Response\Traits;
+namespace Scaleplan\CloudPayments\DTO\Request\Traits;
 
 use OpenApi\Annotations as SWG;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Class StartDateDTOTrait
+ * Class OptionalStartDateDTOTrait
  *
- * @package Scaleplan\CloudPayments\DTO\Response\Traits
+ * @package Scaleplan\CloudPayments\DTO\Request\Traits
  */
-trait StartDateDTOTrait
+trait OptionalStartDateDTOTrait
 {
     /**
-     * @var string
+     * @var string|null
      *
-     * @Assert\NotBlank()
      * @Assert\Type(type="string", groups={"type"})
      * @Assert\DateTime(format="Y-m-d H:i:s")
      *
      * @SWG\Property(
      *     property="startDate",
      *     type="string",
-     *     nullable=false,
+     *     nullable=true,
      *     description="Дата и время первого платежа по плану во временной зоне UTC"
      * )
      */
     protected $startDate;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getStartDate()
     {
         return $this->startDate;
+    }
+
+    /**
+     * @param string|null $startDate
+     */
+    public function setStartDate($startDate) : void
+    {
+        $this->startDate = $startDate;
     }
 }

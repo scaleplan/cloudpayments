@@ -9,7 +9,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Class TransactionIdDTOTrait
  *
- * @package Scaleplan\CloudPayments\DTO\Response\Traits
+ * @package Scaleplan\CloudPayments\DTO\Request\Traits
  */
 trait TransactionIdDTOTrait
 {

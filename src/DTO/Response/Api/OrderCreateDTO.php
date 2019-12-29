@@ -4,38 +4,34 @@ declare(strict_types=1);
 namespace Scaleplan\CloudPayments\DTO\Response\Api;
 
 use OpenApi\Annotations as SWG;
-use Scaleplan\CloudPayments\DTO\Response\Notifications\PayDTO;
-use Symfony\Component\Validator\Constraints as Assert;
 use Scaleplan\Validator\Constraints as AppAssert;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Class GetPaymentDTO
+ * Class OrderCreateDTO
  *
  * @package Scaleplan\CloudPayments\DTO\Response\Api
  */
-class GetPaymentDTO extends ApiResponseDTO
+class OrderCreateDTO extends ApiResponseDTO
 {
     /**
-     * @var array
+     * @var OrderCreateModelDTO
      *
      * @Assert\NotBlank()
-     * @Assert\All({
-     *     @Assert\NotBlank()
-     *     @AppAssert\IsInstanceOf(classname=\Scaleplan\CloudPayments\DTO\Response\Notifications\PayDTO::class)
-     *     @Assert\Valid()
-     * })
+     * @AppAssert\IsInstanceOf(classname=\Scaleplan\CloudPayments\DTO\Response\Api\OrderCreateModelDTO::class)
+     * @Assert\Valid()
      *
      * @SWG\Property(
      *     property="model",
-     *     type="array",
+     *     type="object",
      *     nullable=false,
-     *     description="Информация о платеже"
+     *     description="Информация о сфомированном счете"
      * )
      */
     private $model;
 
     /**
-     * @return array
+     * @return OrderCreateModelDTO
      */
     public function getModel()
     {
@@ -43,7 +39,7 @@ class GetPaymentDTO extends ApiResponseDTO
     }
 
     /**
-     * @param array $models
+     * @param $model
      *
      * @throws \ReflectionException
      * @throws \Scaleplan\CloudPayments\Exceptions\FraudulentNotificationException
@@ -53,10 +49,8 @@ class GetPaymentDTO extends ApiResponseDTO
      * @throws \Scaleplan\DependencyInjection\Exceptions\ReturnTypeMustImplementsInterfaceException
      * @throws \Scaleplan\Helpers\Exceptions\EnvNotFoundException
      */
-    protected function setModel($models) : void
+    protected function setModel($model) : void
     {
-        foreach ($models as $model) {
-            $this->model[] = new PayDTO($model);
-        }
+        $this->model = new OrderCreateModelDTO($model);
     }
 }

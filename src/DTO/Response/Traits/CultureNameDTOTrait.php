@@ -7,31 +7,33 @@ use OpenApi\Annotations as SWG;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Class DataDTOTrait
+ * Class CultureNameDTOTrait
  *
  * @package Scaleplan\CloudPayments\DTO\Response\Traits
  */
-trait DataDTOTrait
+trait CultureNameDTOTrait
 {
     /**
-     * @var array|null
+     * @var string
      *
+     * @Assert\NotBlank()
      * @Assert\Type(type="string", groups={"type"})
+     * @Assert\Length(2)
      *
      * @SWG\Property(
-     *     property="data",
-     *     type="array",
-     *     nullable=true,
-     *     description="Произвольный набор параметров, переданных в транзакцию"
+     *     property="cultureName",
+     *     type="string",
+     *     nullable=false,
+     *     description="Локаль"
      * )
      */
-    protected $data;
+    protected $cultureName;
 
     /**
-     * @return array|null
+     * @return string
      */
-    public function getData()
+    public function getCultureName()
     {
-        return $this->data;
+        return $this->cultureName;
     }
 }

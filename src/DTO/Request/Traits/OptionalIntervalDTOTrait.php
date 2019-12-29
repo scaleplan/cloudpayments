@@ -1,22 +1,21 @@
 <?php
 declare(strict_types=1);
 
-namespace Scaleplan\CloudPayments\DTO\Response\Traits;
+namespace Scaleplan\CloudPayments\DTO\Request\Traits;
 
 use OpenApi\Annotations as SWG;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Class IntervalDTOTrait
+ * Class OptionalIntervalDTOTrait
  *
- * @package Scaleplan\CloudPayments\DTO\Response\Traits
+ * @package Scaleplan\CloudPayments\DTO\Request\Traits
  */
-trait IntervalDTOTrait
+trait OptionalIntervalDTOTrait
 {
     /**
-     * @var string
+     * @var string|null
      *
-     * @Assert\NotBlank()
      * @Assert\Type(type="string", groups={"type"})
      * @Assert\Choice(
      *     strict=true,
@@ -26,17 +25,25 @@ trait IntervalDTOTrait
      * @SWG\Property(
      *     property="interval",
      *     type="string",
-     *     nullable=false,
+     *     nullable=true,
      *     description="Интервал. Возможные значения: Day, Week, Month"
      * )
      */
     protected $interval;
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getInterval()
     {
         return $this->interval;
+    }
+
+    /**
+     * @param string|null $interval
+     */
+    public function setInterval($interval) : void
+    {
+        $this->interval = $interval;
     }
 }

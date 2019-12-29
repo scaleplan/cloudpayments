@@ -7,11 +7,11 @@ use OpenApi\Annotations as SWG;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Class DataDTOTrait
+ * Class JsonDataDTOTrait
  *
  * @package Scaleplan\CloudPayments\DTO\Response\Traits
  */
-trait DataDTOTrait
+trait JsonDataDTOTrait
 {
     /**
      * @var array|null
@@ -19,19 +19,19 @@ trait DataDTOTrait
      * @Assert\Type(type="string", groups={"type"})
      *
      * @SWG\Property(
-     *     property="data",
+     *     property="jsonData",
      *     type="array",
      *     nullable=true,
      *     description="Произвольный набор параметров, переданных в транзакцию"
      * )
      */
-    protected $data;
+    protected $jsonData;
 
     /**
      * @return array|null
      */
-    public function getData()
+    public function getJsonData()
     {
-        return $this->data;
+        return $this->jsonData;
     }
 }

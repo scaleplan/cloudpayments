@@ -11,29 +11,29 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @package Scaleplan\CloudPayments\DTO\Response\Traits
  */
-trait StartDateDTOTrait
+trait CreatedDateIsoDTOTrait
 {
     /**
      * @var string
      *
      * @Assert\NotBlank()
      * @Assert\Type(type="string", groups={"type"})
-     * @Assert\DateTime(format="Y-m-d H:i:s")
+     * @Assert\DateTime(format=\DateTimeInterface::ISO8601)
      *
      * @SWG\Property(
-     *     property="startDate",
+     *     property="createdDateIso",
      *     type="string",
      *     nullable=false,
-     *     description="Дата и время первого платежа по плану во временной зоне UTC"
+     *     description="Дата и время создания платежа"
      * )
      */
-    protected $startDate;
+    protected $createdDateIso;
 
     /**
      * @return string
      */
-    public function getStartDate()
+    public function getCreatedDateIso()
     {
-        return $this->startDate;
+        return $this->createdDateIso;
     }
 }

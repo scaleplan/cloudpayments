@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Scaleplan\CloudPayments\DTO\Response\Traits;
+namespace Scaleplan\CloudPayments\DTO\Request\Traits;
 
 use OpenApi\Annotations as SWG;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -9,7 +9,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Class StartDateDTOTrait
  *
- * @package Scaleplan\CloudPayments\DTO\Response\Traits
+ * @package Scaleplan\CloudPayments\DTO\Request\Traits
  */
 trait StartDateDTOTrait
 {
@@ -35,5 +35,13 @@ trait StartDateDTOTrait
     public function getStartDate()
     {
         return $this->startDate;
+    }
+
+    /**
+     * @param string $startDate
+     */
+    public function setStartDate($startDate) : void
+    {
+        $this->startDate = $startDate;
     }
 }

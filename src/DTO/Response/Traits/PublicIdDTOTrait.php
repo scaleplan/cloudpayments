@@ -7,31 +7,32 @@ use OpenApi\Annotations as SWG;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Class DataDTOTrait
+ * Class PublicIdDTOTrait
  *
  * @package Scaleplan\CloudPayments\DTO\Response\Traits
  */
-trait DataDTOTrait
+trait PublicIdDTOTrait
 {
     /**
-     * @var array|null
+     * @var string
      *
+     * @Assert\NotBlank()
      * @Assert\Type(type="string", groups={"type"})
      *
      * @SWG\Property(
-     *     property="data",
-     *     type="array",
-     *     nullable=true,
-     *     description="Произвольный набор параметров, переданных в транзакцию"
+     *     property="publicId",
+     *     type="string",
+     *     nullable=false,
+     *     description="Идентификатор аккаунта"
      * )
      */
-    protected $data;
+    protected $publicId;
 
     /**
-     * @return array|null
+     * @return string
      */
-    public function getData()
+    public function getPublicId()
     {
-        return $this->data;
+        return $this->publicId;
     }
 }

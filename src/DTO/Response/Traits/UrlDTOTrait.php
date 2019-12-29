@@ -7,33 +7,32 @@ use OpenApi\Annotations as SWG;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Class StartDateDTOTrait
+ * Class UrlDTOTrait
  *
  * @package Scaleplan\CloudPayments\DTO\Response\Traits
  */
-trait StartDateDTOTrait
+trait UrlDTOTrait
 {
     /**
      * @var string
      *
      * @Assert\NotBlank()
-     * @Assert\Type(type="string", groups={"type"})
-     * @Assert\DateTime(format="Y-m-d H:i:s")
+     * @Assert\Url()
      *
      * @SWG\Property(
-     *     property="startDate",
+     *     property="url",
      *     type="string",
      *     nullable=false,
-     *     description="Дата и время первого платежа по плану во временной зоне UTC"
+     *     description="Ссылка на сформированный счет"
      * )
      */
-    protected $startDate;
+    protected $url;
 
     /**
      * @return string
      */
-    public function getStartDate()
+    public function getUrl()
     {
-        return $this->startDate;
+        return $this->url;
     }
 }

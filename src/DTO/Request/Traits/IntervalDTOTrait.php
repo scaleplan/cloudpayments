@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Scaleplan\CloudPayments\DTO\Response\Traits;
+namespace Scaleplan\CloudPayments\DTO\Request\Traits;
 
 use OpenApi\Annotations as SWG;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -9,7 +9,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Class IntervalDTOTrait
  *
- * @package Scaleplan\CloudPayments\DTO\Response\Traits
+ * @package Scaleplan\CloudPayments\DTO\Request\Traits
  */
 trait IntervalDTOTrait
 {
@@ -38,5 +38,13 @@ trait IntervalDTOTrait
     public function getInterval()
     {
         return $this->interval;
+    }
+
+    /**
+     * @param string $interval
+     */
+    public function setInterval($interval) : void
+    {
+        $this->interval = $interval;
     }
 }
