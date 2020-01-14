@@ -12,13 +12,13 @@ use Scaleplan\DTO\DTO;
  *
  * @package Scaleplan\CloudPayments\DTO\Response
  */
-class ApiResponseDTO extends DTO
+abstract class ApiResponseDTO extends DTO
 {
     use SuccessDTOTrait, MessageDTOTrait;
     /**
      * @var bool
      */
-    private $allowMagicSet = false;
+    protected $allowMagicSet = false;
 
     /**
      * ApiResponseDTO constructor.

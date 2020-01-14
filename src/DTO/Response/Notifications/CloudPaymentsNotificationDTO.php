@@ -21,7 +21,7 @@ class CloudPaymentsNotificationDTO extends DTO
     /**
      * @var bool
      */
-    private $allowMagicSet = false;
+    protected $allowMagicSet = false;
 
     /**
      * @throws FraudulentNotificationException
