@@ -5,6 +5,7 @@ namespace Scaleplan\CloudPayments\DTO\Response\Traits;
 
 use OpenApi\Annotations as SWG;
 use Symfony\Component\Validator\Constraints as Assert;
+use Scaleplan\Validator\Constraints as AppAssert;
 
 /**
  * Class TestModeDTOTrait
@@ -17,7 +18,7 @@ trait TestModeDTOTrait
      * @var string
      *
      * @Assert\NotBlank()
-     * @Assert\Type(type="int", groups={"type"})
+     * @AppAssert\FuzzyType(type="int", groups={"type"})
      * @Assert\PositiveOrZero()
      * @Assert\LessThanOrEqual(1)
      *

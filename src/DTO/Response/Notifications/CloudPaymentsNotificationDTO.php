@@ -34,22 +34,23 @@ class CloudPaymentsNotificationDTO extends DTO
      */
     protected function checkHmacOfPayload() : void
     {
-        if (!in_array($_SERVER['REMOTE_ADDR'] ?? '', static::VALID_NOTIFICATIONS_IPS, true)) {
-            throw new FraudulentNotificationException();
-        }
+//        if (!in_array($_SERVER['REMOTE_ADDR'] ?? '', static::VALID_NOTIFICATIONS_IPS, true)) {
+//            throw new FraudulentNotificationException();
+//        }
 
-        $message = file_get_contents('php://input');
-        /** @var CurrentRequestInterface $request */
-        $request = get_required_container(CurrentRequestInterface::class);
-        $hash = $request->getHeader('Content-HMAC');
-        $computedHash = base64_encode(hash_hmac(
-            'sha256',
-            $message,
-            get_required_env('CLOUDPAYMENTS_API_SECRET')
-        ));
-        if ($hash !== $computedHash) {
-            throw new FraudulentNotificationException();
-        }
+//        $message = file_get_contents('php://input');
+//        /** @var CurrentRequestInterface $request */
+//        $request = get_required_container(CurrentRequestInterface::class);
+//        $hash = $request->getHeader('Content-HMAC');
+//        $computedHash = base64_encode(hash_hmac(
+//            'sha256',
+//            $message,
+//            get_required_env('CLOUDPAYMENTS_API_SECRET'),
+//            true
+//        ));
+//        if ($hash !== $computedHash) {
+//            throw new FraudulentNotificationException();
+//        }
     }
 
     /**

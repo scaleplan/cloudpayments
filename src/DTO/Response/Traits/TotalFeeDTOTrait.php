@@ -5,6 +5,7 @@ namespace Scaleplan\CloudPayments\DTO\Response\Traits;
 
 use OpenApi\Annotations as SWG;
 use Symfony\Component\Validator\Constraints as Assert;
+use Scaleplan\Validator\Constraints as AppAssert;
 
 /**
  * Class TotalFeeDTOTrait
@@ -17,8 +18,8 @@ trait TotalFeeDTOTrait
      * @var float
      *
      * @Assert\NotBlank()
-     * @Assert\Type(type="float", groups={"type"})
-     * @Assert\GreaterThanOrEqual(0.01)
+     * @AppAssert\FuzzyType(type="float", groups={"type"})
+     * @Assert\GreaterThanOrEqual(0.00)
      *
      * @SWG\Property(
      *     property="totalFee",
