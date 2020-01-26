@@ -38,19 +38,19 @@ class CloudPaymentsNotificationDTO extends DTO
 //            throw new FraudulentNotificationException();
 //        }
 
-//        $message = file_get_contents('php://input');
-//        /** @var CurrentRequestInterface $request */
-//        $request = get_required_container(CurrentRequestInterface::class);
-//        $hash = $request->getHeader('Content-HMAC');
-//        $computedHash = base64_encode(hash_hmac(
-//            'sha256',
-//            $message,
-//            get_required_env('CLOUDPAYMENTS_API_SECRET'),
-//            true
-//        ));
-//        if ($hash !== $computedHash) {
-//            throw new FraudulentNotificationException();
-//        }
+        $message = file_get_contents('php://input');
+        /** @var CurrentRequestInterface $request */
+        $request = get_required_container(CurrentRequestInterface::class);
+        $hash = $request->getHeader('Content-HMAC');
+        $computedHash = base64_encode(hash_hmac(
+            'sha256',
+            $message,
+            get_required_env('CLOUDPAYMENTS_API_SECRET'),
+            true
+        ));
+        if ($hash !== $computedHash) {
+            throw new FraudulentNotificationException();
+        }
     }
 
     /**
