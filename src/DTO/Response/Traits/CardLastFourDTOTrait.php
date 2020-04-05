@@ -18,7 +18,6 @@ trait CardLastFourDTOTrait
      * @var string
      *
      * @Assert\NotBlank()
-     * @AppAssert\FuzzyType(type="int", groups={"type"})
      * @Assert\LessThanOrEqual(9999)
      * @Assert\PositiveOrZero()
      *
