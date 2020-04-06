@@ -16,18 +16,15 @@ use Scaleplan\Validator\Constraints as AppAssert;
 class GetPaymentDTO extends ApiResponseDTO
 {
     /**
-     * @var array
+     * @var PayDTO
      *
      * @Assert\NotBlank()
-     * @Assert\All({
-     *     @Assert\NotBlank()
-     *     @AppAssert\IsInstanceOf(classname=\Scaleplan\CloudPayments\DTO\Response\Notifications\PayDTO::class)
-     *     @Assert\Valid()
-     * })
+     * @AppAssert\IsInstanceOf(classname=\Scaleplan\CloudPayments\DTO\Response\Notifications\PayDTO::class)
+     * @Assert\Valid()
      *
      * @SWG\Property(
      *     property="model",
-     *     type="array",
+     *     type="object",
      *     nullable=false,
      *     description="Информация о платеже"
      * )
@@ -35,7 +32,7 @@ class GetPaymentDTO extends ApiResponseDTO
     private $model;
 
     /**
-     * @return array
+     * @return PayDTO
      */
     public function getModel()
     {
@@ -43,7 +40,7 @@ class GetPaymentDTO extends ApiResponseDTO
     }
 
     /**
-     * @param array $models
+     * @param array $model
      *
      * @throws \ReflectionException
      * @throws \Scaleplan\CloudPayments\Exceptions\FraudulentNotificationException
@@ -53,10 +50,8 @@ class GetPaymentDTO extends ApiResponseDTO
      * @throws \Scaleplan\DependencyInjection\Exceptions\ReturnTypeMustImplementsInterfaceException
      * @throws \Scaleplan\Helpers\Exceptions\EnvNotFoundException
      */
-    protected function setModel($models) : void
+    protected function setModel($model) : void
     {
-        foreach ($models as $model) {
-            $this->model[] = new PayDTO($model);
-        }
+        $this->model = new PayDTO($model);
     }
 }

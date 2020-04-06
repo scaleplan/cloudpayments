@@ -49,17 +49,11 @@ class Api implements ApiInterface
      */
     protected function send(string $url, DTO $data = null, string $responseDto = null)
     {
-        $dataJson = '';
-        if ($data) {
-            $data->validate();
-            $dataJson = json_encode($data->toArray(), JSON_UNESCAPED_UNICODE | JSON_PRESERVE_ZERO_FRACTION);
-        }
-
+        $data && $data->validate();
         /** @var RequestInterface $request */
-        $request = get_required_container(RequestInterface::class, [static::apiBaseUrl . $url, $dataJson]);
+        $request = get_required_container(RequestInterface::class, [static::apiBaseUrl . $url, $data->toFullArray()]);
         $request->setDtoClass($responseDto);
         $request->setValidationEnable(false);
-
         $request->setMethod('POST');
         $request->addHeader(Header::AUTHORIZATION, $this->getAuthHeaderValue());
         $request->addHeader(Header::CONTENT_TYPE, ContentTypes::JSON);
