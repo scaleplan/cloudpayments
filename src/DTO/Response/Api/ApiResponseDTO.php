@@ -25,7 +25,7 @@ abstract class ApiResponseDTO extends DTO
      *
      * @param array $data
      */
-    public function __construct($data)
+    public function __construct(array $data = [])
     {
         $data = array_combine(array_map('lcfirst', array_keys($data)), array_values($data));
         parent::__construct($data);
