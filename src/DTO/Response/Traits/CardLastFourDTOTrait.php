@@ -5,7 +5,6 @@ namespace Scaleplan\CloudPayments\DTO\Response\Traits;
 
 use OpenApi\Annotations as SWG;
 use Symfony\Component\Validator\Constraints as Assert;
-use Scaleplan\Validator\Constraints as AppAssert;
 
 /**
  * Class CardLastFourDTOTrait
