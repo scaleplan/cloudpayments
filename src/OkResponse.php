@@ -17,6 +17,6 @@ class OkResponse
      */
     public function __toString() : string
     {
-        return json_encode($this->response) ?: '';
+        return (string)(json_encode($this->response) ?: '');
     }
 }
