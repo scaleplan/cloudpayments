@@ -12,7 +12,7 @@ use Scaleplan\HttpStatus\HttpStatusCodes;
  */
 class CloudPaymentsException extends \Exception
 {
-    public const MESSAGE = 'CloudPayments error.';
+    public const MESSAGE = 'Ошибка платежной системы Cloudpayments.';
     public const CODE = HttpStatusCodes::HTTP_BAD_REQUEST;
 
     /**
