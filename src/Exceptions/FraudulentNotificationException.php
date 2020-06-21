@@ -12,6 +12,6 @@ use Scaleplan\HttpStatus\HttpStatusCodes;
  */
 class FraudulentNotificationException extends CloudPaymentsException
 {
-    public const MESSAGE = 'Оповещение от Cloudpayments могло быть скомпрометировано.';
+    public const MESSAGE = 'cloudpayments.fraudulent-notification';
     public const CODE = HttpStatusCodes::HTTP_UNPROCESSABLE_ENTITY;
 }
