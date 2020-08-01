@@ -5,6 +5,7 @@ namespace Scaleplan\CloudPayments\DTO\Response\Traits;
 
 use OpenApi\Annotations as SWG;
 use Symfony\Component\Validator\Constraints as Assert;
+use Scaleplan\Validator\Constraints as AppAssert;
 
 /**
  * Class ReasonCodeDTOTrait
@@ -17,7 +18,7 @@ trait ReasonCodeDTOTrait
      * @var int
      *
      * @Assert\NotBlank()
-     * @Assert\Type(type="int", groups={"type"})
+     * @AppAssert\FuzzyType(type="int", groups={"type"})
      * @Assert\Choice(
      *     strict=true,
      *     choices=\Scaleplan\CloudPayments\Constants\ErrorCodes::ALL
